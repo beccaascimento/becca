@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja Raízes & Pedras | Produtos Naturais</title>
+    <title>Mundo das Pelúcias | Brinquedos & Doces de Brinde</title>
     <style>
         * {
             margin: 0;
@@ -13,210 +13,34 @@
         }
 
         body {
-            background-color: #f4f6f4;
-            color: #2d3748;
+            background-color: #fff0f5;
+            color: #4a4a4a;
             line-height: 1.6;
         }
 
-        header {
-            background-color: #2d6a4f;
+        /* Banner de Brindes */
+        .gift-banner {
+            background-color: #ff6b81;
             color: #ffffff;
-            padding: 2.5rem 1rem;
             text-align: center;
+            padding: 0.8rem;
+            font-weight: bold;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #ffffff;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
+            color: #ff4757;
+            font-size: 2.5rem;
+            margin-bottom: 0.3rem;
         }
 
         header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .products-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-        }
-
-        .product-card {
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            width: calc(50% - 1.5rem);
-            min-width: 280px;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            transition: transform 0.2s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .product-image {
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #ffffff;
-        }
-
-        /* Cores temáticas para as imagens dos produtos */
-        .bg-folhas-secas { background-color: #b07d48; }
-        .bg-folhas-molhadas { background-color: #386641; }
-        .bg-pedras-vermelhas { background-color: #9e2a2b; }
-        .bg-pedras-variadas { background-color: #6c757d; }
-
-        .product-info {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .product-title {
-            font-size: 1.3rem;
-            color: #1b4332;
-            margin-bottom: 0.5rem;
-        }
-
-        .price {
-            font-size: 1.4rem;
-            color: #2d6a4f;
-            font-weight: bold;
-            margin-bottom: 0.8rem;
-        }
-
-        .description {
-            font-size: 0.95rem;
-            color: #555;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .btn-buy {
-            display: block;
-            width: 100%;
-            padding: 0.8rem;
-            background-color: #2d6a4f;
-            color: #ffffff;
-            text-align: center;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .btn-buy:hover {
-            background-color: #1b4332;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 3rem;
-            background-color: #1b4332;
-            color: #ffffff;
-            font-size: 0.9rem;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>Loja Raízes & Pedras</h1>
-        <p>Elementos naturais selecionados para decoração, artesanato e paisagismo</p>
-    </header>
-
-    <main class="container">
-        
-        <div class="products-grid">
-            
-            <div class="product-card">
-                <div class="product-image bg-folhas-secas">
-                    🍁 Folhas Secas de Araucária
-                </div>
-                <div class="product-info">
-                    <h2 class="product-title">Folhas Secas de Araucária (100g)</h2>
-                    <p class="price">R$ 25,00</p>
-                    <p class="description">
-                        Folhas secas selecionadas e higienizadas. Perfeitas para artesanato, quadros decorativos e compostagem.
-                    </p>
-                    <button class="btn-buy" onclick="adicionarAoCarrinho('Folhas Secas')">Comprar Agora</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image bg-folhas-molhadas">
-                    🌿 Folhas Frescas / Umidificadas
-                </div>
-                <div class="product-info">
-                    <h2 class="product-title">Folhas Molhadas de Araucária (100g)</h2>
-                    <p class="price">R$ 28,00</p>
-                    <p class="description">
-                        Folhas colhidas frescas e conservadas sob umidade ideal. Excelente para terrários, substratos e arranjos vivos.
-                    </p>
-                    <button class="btn-buy" onclick="adicionarAoCarrinho('Folhas Molhadas')">Comprar Agora</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image bg-pedras-vermelhas">
-                    🔴 Pedras Vermelhas Coloridas
-                </div>
-                <div class="product-info">
-                    <h2 class="product-title">Pedras Vermelhas Decorativas (1kg)</h2>
-                    <p class="price">R$ 35,00</p>
-                    <p class="description">
-                        Pedras com pigmentação e tom vermelho vibrante. Ideais para acabamento de vasos, jardins e aquários.
-                    </p>
-                    <button class="btn-buy" onclick="adicionarAoCarrinho('Pedras Vermelhas')">Comprar Agora</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image bg-pedras-variadas">
-                    🪨 Pedras de Vários Tamanhos
-                </div>
-                <div class="product-info">
-                    <h2 class="product-title">Kit Pedras Naturais Sortidas (2kg)</h2>
-                    <p class="price">R$ 42,00</p>
-                    <p class="description">
-                        Mix de pedras em tamanhos variados (pequenas, médias e grandes). Ótimas para paisagismo e decoração externa.
-                    </p>
-                    <button class="btn-buy" onclick="adicionarAoCarrinho('Kit Pedras Sortidas')">Comprar Agora</button>
-                </div>
-            </div>
-
-        </div>
-
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Loja Raízes & Pedras. Todos os direitos reservados.</p>
-    </footer>
-
-    <script>
-        function adicionarAoCarrinho(nomeProduto) {
-            alert(nomeProduto + " foi adicionado ao seu carrinho!");
-        }
-    </script>
-
-</body>
-</html>

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das Pelúcias | Loja Virtual</title>
+    <title>Arte no Pulso | Pulseiras Artesanais</title>
     <style>
         :root {
-            --primary: #ff4757;
-            --primary-hover: #ff6b81;
-            --secondary: #ffa502;
-            --bg-light: #fff8f9;
-            --text-dark: #2f3542;
+            --primary: #d4a373;
+            --primary-hover: #bc8a5f;
+            --secondary: #e9edc9;
+            --bg-light: #fefae0;
+            --text-dark: #333d29;
             --white: #ffffff;
         }
 
@@ -27,16 +27,17 @@
             padding-bottom: 60px;
         }
 
-        /* Topo da Loja */
+        /* Faixa Promocional */
         .promo-bar {
-            background-color: var(--secondary);
-            color: var(--white);
+            background-color: #ccd5ae;
+            color: var(--text-dark);
             text-align: center;
             padding: 10px;
             font-weight: bold;
             font-size: 0.9rem;
         }
 
+        /* Cabeçalho */
         header {
             background: var(--white);
             padding: 1.5rem 2rem;
@@ -52,7 +53,7 @@
         .logo {
             font-size: 1.6rem;
             font-weight: bold;
-            color: var(--primary);
+            color: var(--primary-hover);
         }
 
         .cart-btn {
@@ -74,7 +75,7 @@
         .hero {
             text-align: center;
             padding: 3rem 1rem;
-            background: linear-gradient(135deg, #ffeaa7 0%, #ff7675 100%);
+            background: linear-gradient(135deg, #e9edc9 0%, #d4a373 100%);
             color: var(--white);
             margin-bottom: 2rem;
         }
@@ -82,6 +83,7 @@
         .hero h1 {
             font-size: 2.2rem;
             margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         /* Grid de Produtos */
@@ -93,7 +95,7 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 2rem;
         }
 
@@ -112,7 +114,7 @@
         }
 
         .card-img {
-            background: #ffeaa7;
+            background: #faedcd;
             height: 180px;
             display: flex;
             align-items: center;
@@ -129,8 +131,8 @@
 
         .badge {
             align-self: flex-start;
-            background: #74b9ff;
-            color: var(--white);
+            background: #ccd5ae;
+            color: var(--text-dark);
             font-size: 0.75rem;
             padding: 3px 8px;
             border-radius: 10px;
@@ -145,20 +147,15 @@
 
         .price {
             font-size: 1.3rem;
-            color: var(--primary);
+            color: var(--primary-hover);
             font-weight: bold;
             margin-bottom: 10px;
         }
 
-        .gift-tag {
+        .desc {
             font-size: 0.85rem;
-            color: #d63031;
-            background: #ffeaa7;
-            padding: 6px;
-            border-radius: 6px;
-            margin-bottom: 12px;
-            text-align: center;
-            font-weight: bold;
+            color: #666;
+            margin-bottom: 15px;
         }
 
         .add-btn {
@@ -177,7 +174,7 @@
             background: var(--primary-hover);
         }
 
-        /* Modal / Carrinho Lateral */
+        /* Carrinho Lateral */
         .cart-modal {
             position: fixed;
             top: 0;
@@ -236,7 +233,7 @@
         }
 
         .checkout-btn {
-            background: #2ed573;
+            background: #a3b18a;
             color: var(--white);
             border: none;
             padding: 12px;
@@ -250,65 +247,65 @@
 <body>
 
     <div class="promo-bar">
-        🍬 COMPRE QUALQUER PELÚCIA E GANHE DOCES DE BRINDE! 🍭
+        ✨ FRETE GRÁTIS EM COMPRAS ACIMA DE R$ 50,00! ✨
     </div>
 
     <header>
-        <div class="logo">🧸 PelúciaLand</div>
+        <div class="logo">📿 Arte no Pulso</div>
         <button class="cart-btn" onclick="toggleCarrinho()">
             🛒 Carrinho (<span id="cart-count">0</span>)
         </button>
     </header>
 
     <section class="hero">
-        <h1>O Presente Perfeito para Todas as Idades</h1>
-        <p>De mini chaveiros a ursos gigantes abraçáveis!</p>
+        <h1>Pulseiras Artesanais Feitas à Mão</h1>
+        <p>Peças exclusivas, cheias de estilo e energia positiva!</p>
     </section>
 
     <main class="container">
         <div class="products-grid">
             
             <div class="card">
-                <div class="card-img">🐻</div>
+                <div class="card-img">✨</div>
                 <div class="card-body">
-                    <span class="badge">Médio (30cm)</span>
-                    <h3 class="title">Ursinho Carinho</h3>
-                    <div class="price">R$ 49,90</div>
-                    <div class="gift-tag">🎁 Brinde: Pacote de Balas</div>
-                    <button class="add-btn" onclick="adicionarAoCarrinho('Ursinho Carinho', 49.90)">Adicionar ao Carrinho</button>
+                    <span class="badge">Pedras Naturais</span>
+                    <h3 class="title">Pulseira Olho de Tigre</h3>
+                    <div class="price">R$ 29,90</div>
+                    <p class="desc">Feita com pedras naturais e fio elástico resistente. Traz proteção e foco.</p>
+                    <button class="add-btn" onclick="adicionarAoCarrinho('Pulseira Olho de Tigre', 29.90)">Adicionar ao Carrinho</button>
                 </div>
             </div>
 
             <div class="card">
-                <div class="card-img">🧸</div>
+                <div class="card-img">🧵</div>
                 <div class="card-body">
-                    <span class="badge">Gigante (1,20m)</span>
-                    <h3 class="title">Urso Gigante Fofão</h3>
-                    <div class="price">R$ 189,90</div>
-                    <div class="gift-tag">🎁 Brinde: Caixa de Bombom</div>
-                    <button class="add-btn" onclick="adicionarAoCarrinho('Urso Gigante Fofão', 189.90)">Adicionar ao Carrinho</button>
+                    <span class="badge">Macramê</span>
+                    <h3 class="title">Pulseira Hippie Macramê</h3>
+                    <div class="price">R$ 18,00</div>
+                    <p class="desc">Tecida manualmente com fios encerados impermeáveis e fecho regulável.</p>
+                    <button class="add-btn" onclick="adicionarAoCarrinho('Pulseira Hippie Macramê', 18.00)">Adicionar ao Carrinho</button>
                 </div>
             </div>
 
             <div class="card">
-                <div class="card-img">🦄</div>
+                <div class="card-img">🌊</div>
                 <div class="card-body">
-                    <span class="badge">Pequeno (20cm)</span>
-                    <h3 class="title">Unicórnio Mágico</h3>
-                    <div class="price">R$ 39,90</div>
-                    <div class="gift-tag">🎁 Brinde: Pirulito Gourmet</div>
-                    <button class="add-btn" onclick="adicionarAoCarrinho('Unicórnio Mágico', 39.90)">Adicionar ao Carrinho</button>
+                    <span class="badge">Estilo Praiano</span>
+                    <h3 class="title">Pulseira de Búzios</h3>
+                    <div class="price">R$ 22,50</div>
+                    <p class="desc">Búzios naturais selecionados e acabamento trançado. Perfeita para o verão.</p>
+                    <button class="add-btn" onclick="adicionarAoCarrinho('Pulseira de Búzios', 22.50)">Adicionar ao Carrinho</button>
                 </div>
             </div>
 
             <div class="card">
-                <div class="card-img">🦁</div>
+                <div class="card-img">🪵</div>
                 <div class="card-body">
-                    <span class="badge">Mini (12cm)</span>
-                    <h3 class="title">Chaveiro Leãozinho</h3>
-                    <div class="price">R$ 24,90</div>
-                    <div class="gift-tag">🎁 Brinde: Chicletes Variados</div>
-                    <button class="add-btn" onclick="adicionarAoCarrinho('Chaveiro Leãozinho', 24.90)">Adicionar ao Carrinho</button>
+                    <span class="badge">Rústico</span>
+                    <h3 class="title">Kit Pulseiras de Couro</h3>
+                    <div class="price">R$ 35,00</div>
+                    <p class="desc">Conjunto com 3 pulseiras ajustáveis de couro sintético e miçangas rústicas.</p>
+                    <button class="add-btn" onclick="adicionarAoCarrinho('Kit Pulseiras de Couro', 35.00)">Adicionar ao Carrinho</button>
                 </div>
             </div>
 
@@ -364,7 +361,7 @@
                 alert('Seu carrinho está vazio!');
                 return;
             }
-            alert('Pedido realizado com sucesso!\nSeus brinquedos e brindes já estão sendo embalados. 🍬🧸');
+            alert('Pedido confirmado!\nObrigado por apoiar o trabalho artesanal! 📿✨');
             carrinho = [];
             total = 0;
             atualizarCarrinho();

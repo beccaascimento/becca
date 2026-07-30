@@ -3,44 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das Pelúcias | Brinquedos & Doces de Brinde</title>
+    <title>Mundo das Pelúcias | Loja Virtual</title>
     <style>
+        :root {
+            --primary: #ff4757;
+            --primary-hover: #ff6b81;
+            --secondary: #ffa502;
+            --bg-light: #fff8f9;
+            --text-dark: #2f3542;
+            --white: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
         }
 
         body {
-            background-color: #fff0f5;
-            color: #4a4a4a;
-            line-height: 1.6;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            padding-bottom: 60px;
         }
 
-        /* Banner de Brindes */
-        .gift-banner {
-            background-color: #ff6b81;
-            color: #ffffff;
+        /* Topo da Loja */
+        .promo-bar {
+            background-color: var(--secondary);
+            color: var(--white);
             text-align: center;
-            padding: 0.8rem;
+            padding: 10px;
             font-weight: bold;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
+            font-size: 0.9rem;
         }
 
-        /* Cabeçalho */
         header {
-            background-color: #ffffff;
-            padding: 2rem 1rem;
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .cart-btn {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .cart-btn:hover {
+            background: var(--primary-hover);
+        }
+
+        /* Banner Principal */
+        .hero {
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, #ffeaa7 0%, #ff7675 100%);
+            color: var(--white);
+            margin-bottom: 2rem;
         }
 
-        header h1 {
-            color: #ff4757;
-            font-size: 2.5rem;
-            margin-bottom: 0.3rem;
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
         }
 
-        header p {
+        /* Grid de Produtos */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img {
+            background: #ffeaa7;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .card-body {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .badge {
+            align-self: flex-start;
+            background: #74b9ff;
+            color: var(--white);
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .title {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .gift-tag {
+            font-size: 0.85rem;
+            color: #d63031;
+            background: #ffeaa7;
+            padding: 6px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .add-btn {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: auto;
+            transition: 0.2s;
+        }
+
+        .add-btn:hover {
+            background: var(--primary-hover);
+        }
+
+        /* Modal / Carrinho Lateral */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 320px;
+            height: 100%;
+            background: var(--white);
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            transition: 0.4s ease;
+            z-index: 200;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-modal.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            list-style: none;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 5px;
+        }
+
+        .cart-total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .checkout-btn {
+            background: #2ed573;
+            color: var(--white);
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            width: 100%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="promo-bar">
+        🍬 COMPRE QUALQUER PELÚCIA E GANHE DOCES DE BRINDE! 🍭
+    </div>
+
+    <header>
+        <div class="logo">🧸 PelúciaLand</div>
+        <button class="cart-btn" onclick="toggleCarrinho()">
+            🛒 Carrinho (<span id="cart-count">0</span>)
+        </button>
+    </header>
+
+    <section class="hero">
+        <h1>O Presente Perfeito para Todas as Idades</h1>
+        <p>De mini chaveiros a ursos gigantes abraçáveis!</p>
+    </section>
+
+    <main class="container">
+        <div class="products-grid">
+            
+            <div class="card">
+                <div class="card-img">🐻</div>
+                <div class="card-body">
+                    <span class="badge">Médio (30cm)</span>
+                    <h3 class="title">Ursinho Carinho</h3>
+                    <div class="price">R$ 49,90</div>
+                    <div class="gift-tag">🎁 Brinde: Pacote de Balas</div>
+                    <button class="add-btn" onclick="adicionarAoCarrinho('Ursinho Carinho', 49.90)">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">🧸</div>
+                <div class="card-body">
+                    <span class="badge">Gigante (1,20m)</span>
+                    <h3 class="title">Urso Gigante Fofão</h3>
+                    <div class="price">R$ 189,90</div>
+                    <div class="gift-tag">🎁 Brinde: Caixa de Bombom</div>
+                    <button class="add-btn" onclick="adicionarAoCarrinho('Urso Gigante Fofão', 189.90)">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">🦄</div>
+                <div class="card-body">
+                    <span class="badge">Pequeno (20cm)</span>
+                    <h3 class="title">Unicórnio Mágico</h3>
+                    <div class="price">R$ 39,90</div>
+                    <div class="gift-tag">🎁 Brinde: Pirulito Gourmet</div>
+                    <button class="add-btn" onclick="adicionarAoCarrinho('Unicórnio Mágico', 39.90)">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">🦁</div>
+                <div class="card-body">
+                    <span class="badge">Mini (12cm)</span>
+                    <h3 class="title">Chaveiro Leãozinho</h3>
+                    <div class="price">R$ 24,90</div>
+                    <div class="gift-tag">🎁 Brinde: Chicletes Variados</div>
+                    <button class="add-btn" onclick="adicionarAoCarrinho('Chaveiro Leãozinho', 24.90)">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Seu Carrinho</h3>
+            <button class="close-btn" onclick="toggleCarrinho()">&times;</button>
+        </div>
+        <ul class="cart-items" id="cart-items">
+            </ul>
+        <div class="cart-total">
+            Total: R$ <span id="cart-total-price">0.00</span>
+        </div>
+        <button class="checkout-btn" onclick="finalizarCompra()">Finalizar Pedido</button>
+    </div>
+
+    <script>
+        let carrinho = [];
+        let total = 0;
+
+        function toggleCarrinho() {
+            document.getElementById('cartModal').classList.toggle('active');
+        }
+
+        function adicionarAoCarrinho(nome, preco) {
+            carrinho.push({ nome, preco });
+            total += preco;
+            atualizarCarrinho();
+        }
+
+        function atualizarCarrinho() {
+            const lista = document.getElementById('cart-items');
+            const contador = document.getElementById('cart-count');
+            const totalElemento = document.getElementById('cart-total-price');
+
+            lista.innerHTML = '';
+            carrinho.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'cart-item';
+                li.innerHTML = `<span>${item.nome}</span> <b>R$ ${item.preco.toFixed(2)}</b>`;
+                lista.appendChild(li);
+            });
+
+            contador.innerText = carrinho.length;
+            totalElemento.innerText = total.toFixed(2);
+        }
+
+        function finalizarCompra() {
+            if (carrinho.length === 0) {
+                alert('Seu carrinho está vazio!');
+                return;
+            }
+            alert('Pedido realizado com sucesso!\nSeus brinquedos e brindes já estão sendo embalados. 🍬🧸');
+            carrinho = [];
+            total = 0;
+            atualizarCarrinho();
+            toggleCarrinho();
+        }
+    </script>
+</body>
+</html>
